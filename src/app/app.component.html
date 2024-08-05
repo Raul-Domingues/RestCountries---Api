@@ -1,17 +1,30 @@
 <nav>
   <h1>Where in the World?</h1>
-  <button><fa-icon [icon]="faMoon"></fa-icon> Dark Mode</button>
+  <p><fa-icon [icon]="faMoon"></fa-icon> Dark Mode</p>
 </nav>
 
 <main>
-  <input type="search" placeholder="Search for a country..." />
-
-  <div>
-    <div *ngFor="let country of countries | async">
-      <img [src]="country.flag">
-      {{ country.name}} --- {{ country.capital }}
-    </div>
+  <div class="search-container">
+    <input class="search" type="search" placeholder="Search for a country..." />
+    <select name="" id="">
+      <option value="All">All</option>
+      <option value="Africa">Africa</option>
+      <option value="Americas">Americas</option>
+      <option value="Asia">Asia</option>
+      <option value="Europe">Europe</option>
+      <option value="Oceania">Oceania</option>
+    </select>
   </div>
 
-  <p>{{ countries[0] }}</p>
+  <div class="container">
+    <div class="cards" *ngFor="let country of countries | async">
+      <img [src]="country.flag" />
+      <div class="card-info">
+        <p>{{ country.name }}</p>
+        <p>Population: {{ country.population }}</p>
+        <p>Region: {{ country.region }}</p>
+        <p>Capital: {{ country.capital }}</p>
+      </div>
+    </div>
+  </div>
 </main>
